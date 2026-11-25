@@ -3,10 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ことばっくす！２年</title>
-  <meta property="og:title" content="ことばっくす！２年">
-    <meta property="og:description" content="【２年国語】言葉の学習アプリです。">
-    <meta property="og:type" content="website">
+  <title>ことばっくす！　２年生</title>
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- Tone.js (効果音生成) -->
@@ -142,13 +139,13 @@
 
       <div id="header-status" class="text-right ml-auto">
         <span class="inline-block px-3 py-0.5 rounded-full bg-amber-300 text-amber-950 font-bold text-xs sm:text-sm">
-          小学１・２年 国語 ことばの学習
+          ２年生 国語 ことばの学習
         </span>
       </div>
     </header>
 
     <!-- メインコンテンツ描画エリア -->
-    <main id="screen-root" class="flex-1 flex flex-col justify-between p-3 sm:p-5 md:p-6 relative overflow-y-auto">
+    <main id="screen-root" class="flex-1 flex flex-col justify-between p-3 sm:p-5 md:p-6 relative">
       <!-- JavaScriptで各画面を描画 -->
     </main>
 
@@ -1451,7 +1448,7 @@
         btnHome.classList.remove('flex');
         headerStatus.innerHTML = `
           <span class="inline-block px-3 py-0.5 rounded-full bg-amber-300 text-amber-950 font-bold text-xs sm:text-sm">
-            小学１・２年 国語 ことばの学習
+            ２年生 国語 ことばの学習
           </span>
         `;
       } else {
@@ -1516,44 +1513,18 @@
           <!-- アプリタイトル -->
           <div class="text-center">
             <p class="text-xs font-bold text-rose-800 tracking-wider">
-              小学１・２年 ことばのきまり・ちしき
+              ２年生 ことばのきまり・ちしき
             </p>
             <h1 class="text-2xl sm:text-3xl font-extrabold text-slate-800 tracking-tight">
               ことばっくす！
             </h1>
           </div>
 
-          <!-- STEP 1: 学年タブ切り替え -->
-          <div class="bg-rose-50/90 p-2 rounded-2xl border-2 border-rose-200">
-            <div class="text-xs font-extrabold text-rose-900 mb-1 flex items-center gap-1.5">
-              <span class="px-2 py-0.5 rounded-md bg-rose-500 text-white">STEP 1</span>
-              <span>がくねんを えらぼう</span>
-            </div>
-            <div class="grid grid-cols-2 gap-2">
-              <button type="button" onclick="selectGrade(1)"
-                class="py-1.5 px-4 rounded-2xl font-extrabold text-sm sm:text-base border-2 transition active:scale-95 ${
-                  state.selectedGrade === 1
-                    ? 'bg-rose-500 text-white border-rose-700 shadow-md'
-                    : 'bg-white text-rose-800 border-rose-200 hover:bg-rose-50'
-                }">
-                １ねんせい
-              </button>
-              <button type="button" onclick="selectGrade(2)"
-                class="py-1.5 px-4 rounded-2xl font-extrabold text-sm sm:text-base border-2 transition active:scale-95 ${
-                  state.selectedGrade === 2
-                    ? 'bg-amber-500 text-white border-amber-700 shadow-md'
-                    : 'bg-white text-amber-800 border-amber-200 hover:bg-amber-50'
-                }">
-                ２年生
-              </button>
-            </div>
-          </div>
-
-          <!-- STEP 2: 単元選択 -->
+          <!-- STEP 1: 単元選択 -->
           <div class="bg-amber-50/60 p-2 sm:p-2.5 rounded-2xl border-2 border-amber-200">
             <div class="flex flex-wrap items-center justify-between gap-2 mb-1.5">
               <div class="text-xs font-extrabold text-amber-950 flex items-center gap-1.5">
-                <span class="px-2 py-0.5 rounded-md bg-amber-700 text-white">STEP 2</span>
+                <span class="px-2 py-0.5 rounded-md bg-amber-700 text-white">STEP 1</span>
                 <span>がくしゅうする たんげんを えらぼう</span>
               </div>
               <button type="button" onclick="selectUnit('mix-${state.selectedGrade}')"
@@ -1566,7 +1537,7 @@
               </button>
             </div>
 
-            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-1.5 max-h-[175px] sm:max-h-[195px] overflow-y-auto pr-1">
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-1.5 pr-1">
               ${unitButtonsHtml}
             </div>
           </div>
@@ -2578,8 +2549,6 @@
     }
 
     function inputKanaChar(keyObj, mode, flickDir = 'center') {
-      playSound('tap');
-
       if (keyObj.isModifier) {
         if (kbState.composing.length > 0) {
           const lastChar = kbState.composing.slice(-1);
